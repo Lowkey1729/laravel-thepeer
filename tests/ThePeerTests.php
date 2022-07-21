@@ -14,9 +14,7 @@ class ThePeerTests extends TestCase
      */
     public function it_returns_validation_error()
     {
-       Http::fake([
-            ''
-       ]);
+//       $this->get()
 //        $response->assertStatus(422);
 //        $response->assertJsonValidationErrors();
     }

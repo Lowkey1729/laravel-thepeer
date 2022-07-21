@@ -18,12 +18,14 @@ trait ThePeerConfigurationTrait
         $config = function_exists('config') && !empty(config('loki_the_peer')) ? config('loki_the_peer') : $config;
     }
 
-    protected function setHeaders(): void
+    public function setHeaders(array $header_params): self
     {
-        $this->headers = [
-            'X-Api-Key' => '',
-            'Accept' => 'application/json'
-        ];
+        foreach ($header_params as $key => $header_param) {
+            $this->headers[] = [$key => $header_param];
+        }
+
+        return $this;
+
     }
 
     protected function setApiEnvironment(string $mode): void
@@ -40,5 +42,10 @@ trait ThePeerConfigurationTrait
     protected function ifConfigurationIsInvalid(): Exception
     {
         throw new RuntimeException('Invalid credentials provided. Please, provide a valid Thepeer credentials. You can refer to your Thepeer dashboard for clarity.');
+    }
+
+    public function setCredentials(array $credentials): void
+    {
+
     }
 }
