@@ -1,8 +1,8 @@
 {
-    "name": "macbook/laravel-thepeer",
+    "name": "loki1729/laravel-thepeer",
     "autoload": {
         "psr-4": {
-            "Macbook\\LaravelThepeer\\": "src/"
+            "Loki1729\\LaravelThePeer\\": "src/"
         }
     },
     "authors": [
@@ -12,6 +12,11 @@
         }
     ],
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "orchestra/testbench": "^7.6"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }
