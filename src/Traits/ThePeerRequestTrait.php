@@ -12,6 +12,18 @@ trait ThePeerRequestTrait
         return $this->response($result);
     }
 
+    public function put(string $url, array $payload): array
+    {
+        $result = Http::put($url, $payload);
+        return $this->response($result);
+    }
+
+    public function delete(string $url): array
+    {
+        $result = Http::delete($url);
+        return $this->response($result);
+    }
+
     public function get(string $url): array
     {
         $result = Http::get($url);

@@ -13,6 +13,8 @@ trait ThePeerConfigurationTrait
 
     protected array $headers = [];
 
+    protected string $baseUrl = '';
+
     protected function setConfig(array $config): void
     {
         $config = function_exists('config') && !empty(config('loki_the_peer')) ? config('loki_the_peer') : $config;
