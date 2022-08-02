@@ -9,36 +9,36 @@ trait ThePeerRequestTrait
 {
     use ThePeerConfigurationTrait;
 
-    public function post(string $url, array $payload): array
+    protected function post(string $url, array $payload): array
     {
         $result = $this->httpClient()->post($url, $payload);
         return $this->response($result);
     }
 
-    public function put(string $url, array $payload): array
+    protected function put(string $url, array $payload): array
     {
         $result = $this->httpClient()->put($url, $payload);
         return $this->response($result);
     }
 
-    public function delete(string $url): array
+    protected function delete(string $url): array
     {
         $result = $this->httpClient()->delete($url);
         return $this->response($result);
     }
 
-    public function get(string $url): array
+    protected function get(string $url): array
     {
         $result = $this->httpClient()->get($url);
         return $this->response($result);
     }
 
-    public function response($res): array
+    protected function response($res): array
     {
         return $res->json();
     }
 
-    public function httpClient(): \Illuminate\Http\Client\PendingRequest
+    protected function httpClient(): \Illuminate\Http\Client\PendingRequest
     {
         return Http::withHeaders($this->headers);
     }

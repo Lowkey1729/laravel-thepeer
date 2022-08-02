@@ -15,7 +15,7 @@ trait ThePeerConfigurationTrait
 
     protected string $baseUrl = 'https://api.thepeer.co';
 
-    public function setConfig($secret_key = ''): self|\Exception
+    protected function setConfig($secret_key = ''): self|\Exception
     {
         $this->config = function_exists('config') && !empty(config('loki_the_peer')) ? config('loki_the_peer') : [
             'mode' => $this->mode,
@@ -30,7 +30,7 @@ trait ThePeerConfigurationTrait
         return $this;
     }
 
-    public function setHeaders(): self
+    protected function setHeaders(): self
     {
         $this->headers['X-Api-Key'] = $this->config[$this->mode]['secret_key'];
         $this->headers['Accept'] = 'application/json';
