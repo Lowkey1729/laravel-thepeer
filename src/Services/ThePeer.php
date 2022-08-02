@@ -2,13 +2,13 @@
 
 namespace Loki1729\LaravelThePeer\Services;
 
+
 use Illuminate\Support\Facades\Config;
 use Loki1729\LaravelThePeer\Traits\ThePeerRequestTrait;
 use Loki1729\LaravelThePeer\Traits\ThePeerConfigurationTrait;
 
 class ThePeer
 {
-    use ThePeerConfigurationTrait;
     use ThePeerRequestTrait;
 
     private const USER = '/users';
@@ -16,6 +16,13 @@ class ThePeer
     private const LINK = '/link';
     private const TEST_CREDIT = '/test/credit';
     private const TEST_CHARGE = '/test/charge';
+
+    public function __construct($mode = 'live', $secret_key = '')
+    {
+        $this->setMode($mode)
+            ->setConfig($secret_key)
+            ->setHeaders();
+    }
 
     public function indexUser(string $name, string $identifier, string $email): array
     {
@@ -111,8 +118,7 @@ class ThePeer
             'channel' => $channel
         ];
         $url = sprintf('%s%s', $this->baseUrl, self::TEST_CHARGE);
-        $this->post($url, $payload);
+        return $this->post($url, $payload);
     }
-
 
 }

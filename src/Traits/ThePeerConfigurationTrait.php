@@ -7,47 +7,43 @@ use http\Exception\RuntimeException;
 
 trait ThePeerConfigurationTrait
 {
-    protected array $config;
+    protected array $config = [];
 
     protected string $mode = 'live';
 
     protected array $headers = [];
 
-    protected string $baseUrl = '';
+    protected string $baseUrl = 'https://api.thepeer.co';
 
-    protected function setConfig(array $config): void
+    public function setConfig($secret_key = ''): self|\Exception
     {
-        $config = function_exists('config') && !empty(config('loki_the_peer')) ? config('loki_the_peer') : $config;
+        $this->config = function_exists('config') && !empty(config('loki_the_peer')) ? config('loki_the_peer') : [
+            'mode' => $this->mode,
+            'sandbox' => [
+                'secret_key' => $secret_key,
+            ],
+            'live' => [
+                'secret_key' => $secret_key
+            ]
+        ];
+
+        return $this;
     }
 
-    public function setHeaders(array $header_params): self
+    public function setHeaders(): self
     {
-        foreach ($header_params as $key => $header_param) {
-            $this->headers[] = [$key => $header_param];
-        }
+        $this->headers['X-Api-Key'] = $this->config[$this->mode]['secret_key'];
+        $this->headers['Accept'] = 'application/json';
 
         return $this;
 
     }
 
-    protected function setApiEnvironment(string $mode): void
+    protected function setMode($mode): self
     {
-        $mode ? $this->setMode($mode) : $this->ifConfigurationIsInvalid();
-    }
-
-    protected function setMode($mode): void
-    {
-        $this->mode = !in_array($mode, ['live', 'test']) ? 'live' : 'test';
+        $this->mode = !in_array($mode, ['live', 'sandbox']) ? 'live' : $mode;
+        return $this;
     }
 
 
-    protected function ifConfigurationIsInvalid(): Exception
-    {
-        throw new RuntimeException('Invalid credentials provided. Please, provide a valid Thepeer credentials. You can refer to your Thepeer dashboard for clarity.');
-    }
-
-    public function setCredentials(array $credentials): void
-    {
-
-    }
 }

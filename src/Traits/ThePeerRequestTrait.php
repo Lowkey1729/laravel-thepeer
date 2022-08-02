@@ -3,30 +3,33 @@
 namespace Loki1729\LaravelThePeer\Traits;
 
 use Illuminate\Support\Facades\Http;
+use \Loki1729\LaravelThePeer\Traits\ThePeerConfigurationTrait;
 
 trait ThePeerRequestTrait
 {
+    use ThePeerConfigurationTrait;
+
     public function post(string $url, array $payload): array
     {
-        $result = Http::post($url, $payload);
+        $result = $this->httpClient()->post($url, $payload);
         return $this->response($result);
     }
 
     public function put(string $url, array $payload): array
     {
-        $result = Http::put($url, $payload);
+        $result = $this->httpClient()->put($url, $payload);
         return $this->response($result);
     }
 
     public function delete(string $url): array
     {
-        $result = Http::delete($url);
+        $result = $this->httpClient()->delete($url);
         return $this->response($result);
     }
 
     public function get(string $url): array
     {
-        $result = Http::get($url);
+        $result = $this->httpClient()->get($url);
         return $this->response($result);
     }
 
@@ -34,5 +37,11 @@ trait ThePeerRequestTrait
     {
         return $res->json();
     }
+
+    public function httpClient(): \Illuminate\Http\Client\PendingRequest
+    {
+        return Http::withHeaders($this->headers);
+    }
+
 
 }

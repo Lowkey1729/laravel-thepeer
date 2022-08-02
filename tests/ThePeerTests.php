@@ -4,18 +4,19 @@ namespace Tests;
 
 
 use Illuminate\Support\Facades\Http;
+use Loki1729\LaravelThePeer\Services\ThePeer;
 use Orchestra\Testbench\TestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 class ThePeerTests extends TestCase
 {
-    /**
-     * @test
-     */
-    public function it_returns_validation_error()
+    protected $client;
+
+    protected function setUp(): void
     {
-//       $this->get()
-//        $response->assertStatus(422);
-//        $response->assertJsonValidationErrors();
+        parent::setUp();
+        $this->client = new ThePeer();
     }
+
+
 }
