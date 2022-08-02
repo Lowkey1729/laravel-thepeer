@@ -22,5 +22,15 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Loki1729\\LaravelThePeer\\ServiceProviders\\ThePeerServiceProvider"
+            ],
+            "aliases": {
+                "PayPal": "Loki1729\\LaravelThePeer\\Facades\\ThePeer"
+            }
+        }
     }
 }
