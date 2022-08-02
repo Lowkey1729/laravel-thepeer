@@ -1,5 +1,6 @@
 {
     "name": "loki1729/laravel-thepeer",
+    "description": "Laravel Package for easy integration of ThePeer APIs.",
     "autoload": {
         "psr-4": {
             "Loki1729\\LaravelThePeer\\": "src/"
@@ -7,10 +8,13 @@
     },
     "authors": [
         {
-            "name": "lowkey1729",
+            "name": "Olarewaju Mojeed",
             "email": "olarewajumojeed9@gmail.com"
         }
     ],
+    "require": {
+        "php" : ">=8.0"
+    },
     "require-dev": {
         "orchestra/testbench": "^7.6"
     },
