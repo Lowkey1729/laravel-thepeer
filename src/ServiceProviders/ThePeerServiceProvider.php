@@ -10,7 +10,7 @@ class ThePeerServiceProvider extends ServiceProvider
 {
     protected bool $defer = false;
 
-    public function boot(Closure $callback)
+    public function boot()
     {
         $this->publishes([
             __DIR__ . '/../..config/config.php' => config_path('loki_the_peer.php'),
