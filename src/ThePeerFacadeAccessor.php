@@ -10,7 +10,7 @@ class ThePeerFacadeAccessor
 
     public function setProvider()
     {
-        $this->provider = resolve(ThePeer::class);
+        $this->provider = new ThePeer();
         return $this;
     }
 
