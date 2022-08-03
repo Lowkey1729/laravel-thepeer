@@ -12,7 +12,7 @@ class ThePeerServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->publishes([__DIR__ . '/../..config/the_peer_config.php' => config_path('loki_the_peer.php'),
+        $this->publishes([__DIR__ . '/../..config/loki_the_peer.php' => config_path('loki_the_peer.php'),
         ]);
     }
 
@@ -32,7 +32,7 @@ class ThePeerServiceProvider extends ServiceProvider
 
     private function mergeConfig()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/the_peer_config.php', 'loki_the_peer');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/loki_the_peer.php', 'loki_the_peer');
     }
 
 
