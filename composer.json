@@ -29,7 +29,7 @@
                 "Loki1729\\LaravelThePeer\\ServiceProviders\\ThePeerServiceProvider"
             ],
             "aliases": {
-                "PayPal": "Loki1729\\LaravelThePeer\\Facades\\ThePeer"
+                "ThePeer": "Loki1729\\LaravelThePeer\\Facades\\ThePeer"
             }
         }
     }
