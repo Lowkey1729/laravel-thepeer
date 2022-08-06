@@ -1,6 +1,8 @@
 {
     "name": "loki1729/laravel-thepeer",
     "description": "Laravel Package for easy integration of ThePeer APIs.",
+    "keywords": ["http", "rest", "web service", "thepeer", "Thepeer", "laravel Thepeer"],
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Loki1729\\LaravelThePeer\\": "src/"
