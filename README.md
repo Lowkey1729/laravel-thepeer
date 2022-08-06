@@ -62,11 +62,11 @@ You can either use the env to set your keys or use your keys as shown in the exa
 ````php
      $the_peer_service = new ThePeerClient($mode, $secret_key);
      
-    For local testing, the "mode" is set to "sandbox", 
+    For local testing, the "mode" is set to "sandbox"; 
     
     $the_peer_service = new ThePeerClient('sandbox', 'secret-key');
     
-    For Live testing, the "mode" is set to "live",
+    For Live testing, the "mode" is set to "live";
     
     $the_peer_service = new ThePeerClient('live', 'secret-key');
 ````
