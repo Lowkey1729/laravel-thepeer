@@ -17,7 +17,7 @@ trait ThePeerConfigurationTrait
 
     protected function setConfig($mode = null, $secret_key = null): self
     {
-        $this->config = function_exists('config') && !empty(config('loki_the_peer') && !is_null($mode)) ? config('loki_the_peer') : [
+        $this->config = function_exists('config') && !empty(config('loki_the_peer') && is_null($mode)) ? config('loki_the_peer') : [
             'mode' => $mode,
             'sandbox' => [
                 'secret_key' => $secret_key,
