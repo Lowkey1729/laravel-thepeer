@@ -4,6 +4,12 @@
 - [Usage](#usage)
 - [Support](#support)
 
+## Installation
+
+```php
+composer require loki1729/laravel-thepeer
+```
+
 <a name="usage"></a>
 
 ## Usage
@@ -55,6 +61,7 @@ You can either use the env to set your keys or use your keys as shown in the exa
 
 ````php
      $the_peer_service = new ThePeerClient($mode, $secret_key);
+     
     For local testing, the "mode" is set to "sandbox", 
     
     $the_peer_service = new ThePeerClient('sandbox', 'secret-key');
