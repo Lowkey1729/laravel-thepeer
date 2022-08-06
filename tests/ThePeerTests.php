@@ -18,5 +18,11 @@ class ThePeerTests extends TestCase
         $this->client = new ThePeer();
     }
 
+    /**
+     * @test
+     */
+    public function it_reads_credentials()
+    {
 
+    }
 }

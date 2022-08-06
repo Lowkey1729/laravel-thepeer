@@ -17,8 +17,9 @@ class ThePeer
     private const TEST_CREDIT = '/test/credit';
     private const TEST_CHARGE = '/test/charge';
 
-    public function __construct($mode = 'live', $secret_key = '')
+    public function __construct($mode = '', $secret_key = '')
     {
+
         $this->setMode($mode)
             ->setConfig($secret_key)
             ->setHeaders();

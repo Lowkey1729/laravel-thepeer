@@ -9,14 +9,15 @@ trait ThePeerConfigurationTrait
 {
     protected array $config = [];
 
-    protected string $mode = 'live';
+    protected string $mode = '';
 
     protected array $headers = [];
 
     protected string $baseUrl = 'https://api.thepeer.co';
 
-    protected function setConfig($secret_key = ''): self|\Exception
+    protected function setConfig($secret_key = ''): self
     {
+
         $this->config = function_exists('config') && !empty(config('loki_the_peer')) ? config('loki_the_peer') : [
             'mode' => $this->mode,
             'sandbox' => [
@@ -41,6 +42,9 @@ trait ThePeerConfigurationTrait
 
     protected function setMode($mode): self
     {
+        if (is_null($mode)) {
+            $mode = $this->config['mode'];
+        }
         $this->mode = !in_array($mode, ['live', 'sandbox']) ? 'live' : $mode;
         return $this;
     }
