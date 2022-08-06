@@ -15,11 +15,10 @@ trait ThePeerConfigurationTrait
 
     protected string $baseUrl = 'https://api.thepeer.co';
 
-    protected function setConfig($secret_key = ''): self
+    protected function setConfig($mode = null, $secret_key = null): self
     {
-
-        $this->config = function_exists('config') && !empty(config('loki_the_peer')) ? config('loki_the_peer') : [
-            'mode' => $this->mode,
+        $this->config = function_exists('config') && !empty(config('loki_the_peer') && !is_null($mode)) ? config('loki_the_peer') : [
+            'mode' => $mode,
             'sandbox' => [
                 'secret_key' => $secret_key,
             ],

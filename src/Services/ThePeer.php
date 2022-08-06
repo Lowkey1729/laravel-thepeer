@@ -17,11 +17,11 @@ class ThePeer
     private const TEST_CREDIT = '/test/credit';
     private const TEST_CHARGE = '/test/charge';
 
-    public function __construct($mode = '', $secret_key = '')
+    public function __construct($mode = null, $secret_key = null)
     {
 
-        $this->setMode($mode)
-            ->setConfig($secret_key)
+        $this->setConfig($mode, $secret_key)
+            ->setMode($mode)
             ->setHeaders();
     }
 
